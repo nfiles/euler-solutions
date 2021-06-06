@@ -3,7 +3,9 @@ name = "euler-solutions"
 version = "0.1.0"
 authors = ["Nathan Files <nathanwfiles@gmail.com>"]
 edition = "2018"
+description = "Solutions to Project Euler problems"
 
 [dependencies]
+clap = "^2.33"
 log = "^0.4"
 env_logger = "^0.8"
