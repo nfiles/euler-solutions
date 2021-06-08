@@ -1,6 +1,5 @@
 # euler-solutions
 
 ```sh
-export RUST_LOG=info
-cargo test problem001
+cargo run --release 50
 ```
