@@ -3,6 +3,8 @@ extern crate log;
 #[macro_use]
 extern crate clap;
 
+extern crate primes;
+
 use clap::{App, Arg};
 
 mod solutions;

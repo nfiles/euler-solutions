@@ -5,7 +5,11 @@ authors = ["Nathan Files <nathanwfiles@gmail.com>"]
 edition = "2018"
 description = "Solutions to Project Euler problems"
 
+[workspace]
+members = [ "primes" ]
+
 [dependencies]
 clap = "^2.33"
 log = "^0.4"
 env_logger = "^0.8"
+primes = { path = "./primes" }

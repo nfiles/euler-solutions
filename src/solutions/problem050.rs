@@ -1,29 +1,12 @@
 /// Which prime, below one-million, can be written as the sum of the most consecutive primes?
 use std::collections::HashSet;
 
-pub fn get_primes(max: u64) -> Vec<u64> {
-    let mut composite: HashSet<u64> = HashSet::new();
-    let mut primes: Vec<u64> = Vec::new();
-
-    for num in 2..max {
-        if composite.contains(&num) {
-            continue;
-        }
-
-        primes.push(num);
-
-        for mult in num..(max / (num - 1)) {
-            composite.insert(num * mult);
-        }
-    }
-
-    primes
-}
+use primes::prime_seive;
 
 pub fn run() -> String {
     const MAX: u64 = 1_000_000;
 
-    let primes = get_primes(MAX);
+    let primes = prime_seive(MAX);
     let is_prime: HashSet<u64> = primes.clone().into_iter().collect();
 
     // find all sums
