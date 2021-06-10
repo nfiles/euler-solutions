@@ -1,4 +1,4 @@
-/// What is the largest prime factor of the number 600851475143 ?
+/// What is the largest prime factor of the number 600851475143?
 
 pub fn run() -> String {
     let mut num: u64 = 600851475143;
