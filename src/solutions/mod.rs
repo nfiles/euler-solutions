@@ -5,6 +5,7 @@ pub mod problem002;
 pub mod problem003;
 pub mod problem049;
 pub mod problem050;
+pub mod problem051;
 
 pub fn solve(num: u32) -> Option<String> {
     let solution = match num {
@@ -13,6 +14,7 @@ pub fn solve(num: u32) -> Option<String> {
         3 => problem003::run(),
         49 => problem049::run(),
         50 => problem050::run(),
+        51 => problem051::run(),
         _ => return None,
     };
 
