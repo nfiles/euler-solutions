@@ -12,4 +12,6 @@ members = [ "primes" ]
 clap = "^2.33"
 log = "^0.4"
 env_logger = "^0.8"
+itertools = "^0.10"
+
 primes = { path = "./primes" }

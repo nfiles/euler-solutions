@@ -1,5 +1,6 @@
 use std::collections::HashSet;
 
+/// Creates a list of all primes in the range (0..max)
 pub fn prime_seive(max: u64) -> Vec<u64> {
     let mut composite: HashSet<u64> = HashSet::new();
     let mut primes: Vec<u64> = Vec::new();
