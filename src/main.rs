@@ -10,6 +10,7 @@ use clap::{App, Arg};
 mod solutions;
 
 const PROBLEM: &str = "number";
+const TIMING: &str = "timing";
 
 fn main() {
     env_logger::init();
@@ -21,13 +22,28 @@ fn main() {
         .arg(
             Arg::with_name(PROBLEM)
                 .value_name("problem")
-                .required(true)
                 .help("number of the project euler solution"),
+        )
+        .arg(
+            Arg::with_name(TIMING)
+                .long("time")
+                .takes_value(false)
+                .help("report how long it took to find the solution"),
         )
         .setting(clap::AppSettings::AllowLeadingHyphen)
         .get_matches();
 
-    let number = match matches.value_of(PROBLEM).unwrap().parse::<u32>() {
+    let timing = matches.is_present(TIMING);
+
+    let number_arg = match matches.value_of(PROBLEM) {
+        None => {
+            print!("{}", solutions::progress());
+            std::process::exit(0);
+        }
+        Some(number_str) => number_str,
+    };
+
+    let number = match number_arg.parse::<u32>() {
         Err(err) => {
             eprintln!("Error parsing the number: {}", err);
             std::process::exit(1);
@@ -38,6 +54,7 @@ fn main() {
     let start = std::time::Instant::now();
     let solution = solutions::solve(number);
     let elapsed = start.elapsed();
+
     match solution {
         None => {
             eprintln!("no solution for problem {}", number);
@@ -45,7 +62,9 @@ fn main() {
         }
         Some(result) => {
             println!("problem {}: {}", number, result);
-            println!("completed in {} seconds", elapsed.as_secs_f32());
+            if timing {
+                println!("completed in {} seconds", elapsed.as_secs_f32());
+            }
         }
     }
 }
