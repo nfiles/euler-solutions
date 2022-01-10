@@ -35,12 +35,17 @@ fn main() {
         Ok(number) => number,
     };
 
+    let start = std::time::Instant::now();
     let solution = solutions::solve(number);
+    let elapsed = start.elapsed();
     match solution {
         None => {
             eprintln!("no solution for problem {}", number);
             std::process::exit(2);
         }
-        Some(result) => println!("problem {}: {}", number, result),
+        Some(result) => {
+            println!("problem {}: {}", number, result);
+            println!("completed in {} seconds", elapsed.as_secs_f32());
+        }
     }
 }
